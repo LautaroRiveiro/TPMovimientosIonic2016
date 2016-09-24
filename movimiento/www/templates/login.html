@@ -1,0 +1,22 @@
+<ion-view view-title="Bienvenido">
+  <ion-content scroll="false">
+    <div class="login">
+        <div class="list list-inset input-usuario">
+          <label class="item item-input">
+            <i class="icon ion-person placeholder-icon"></i>
+            <span class="input-label" style="width: 30px;">Usuario</span>
+            <input type="text" id="txtUsuario" ng-model="usuario.nombre">
+          </label>
+        </div>
+        <div class="paddingLogin">
+          <button class="button button button-balanced" ng-click="Ingresar(usuario)"> INGRESAR </button>
+          <!-- <h2>{{usuario.nombre}}</h2> -->
+           <p class="text-center">
+            <a href="#/forgot-password">Forgot password</a>
+          </p>
+        </div>
+    </div>
+    <br>
+    <img src="img/login.jpg" alt="" style="width: 50%; display: block; margin: 0 auto;">
+  </ion-content>
+</ion-view>

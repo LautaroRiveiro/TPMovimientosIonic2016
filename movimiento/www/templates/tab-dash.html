@@ -10,14 +10,17 @@
 			                <td><button ng-disabled="!parar" class="button button-block button-positive ion-stop" ng-click="Stop()">
 			                	
 			                </button></td>
-			                <td>
-			                <button ng-disabled="!reproducir" class="button button-block button-balanced ion-play" ng-click="Reproducir()"></button></td>
 			            </tr>
 			            <tr>
+			                <td>
+			                <button ng-disabled="!reproducir" class="button button-block button-balanced ion-play" ng-click="Reproducir()"></button></td>
+			            
+			            
 			                <td><button ng-disabled="!borraryguardar" class="button button-block button-dark ion-trash-b" ng-click="Borrar()"></button> </td>
-			                <td><button ng-disabled="!borraryguardar" class="button button-block button-calm ion-checkmark" ng-click="Guardar()"></button></td>
-			                <td><button class="button button-block button-royal ion-music-note" ng-click="LeerTxt()"></button></td>
 			            </tr>
+			                <!-- <td><button ng-disabled="!borraryguardar" class="button button-block button-calm ion-checkmark" ng-click="Guardar()"></button></td>
+			                <td><button class="button button-block button-royal ion-music-note" ng-click="LeerTxt()"></button></td> -->
+			            
 			        </table>
 			    </div>
 
@@ -27,7 +30,7 @@
               <button class="button button-full button-positive" ng-click="Parar()">
                   Parar mediciones
               </button> -->
-              
+
               <h6>RESULTADO: {{coordenadas.resultado}}</h6>
               <h6>MELODIA: {{melodia}}</h6>
 

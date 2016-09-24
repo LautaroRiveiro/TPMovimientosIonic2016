@@ -365,4 +365,21 @@ angular.module('starter.controllers', [])
   $scope.settings = {
     enableFriends: true
   };
+})
+
+.controller('LoginCtrl', function($scope, $state) {
+    $scope.usuario = {};
+    $scope.usuario.nombre = "";
+   
+    $scope.$watch('usuario.nombre', function(newVal, oldVal){
+        console.log('changed');
+    });
+    
+    
+    
+    
+    $scope.Ingresar = function(){
+        console.log($scope.usuario.nombre);
+        $state.go('tab.dash', {usuario: $scope.usuario});
+    }
 });
