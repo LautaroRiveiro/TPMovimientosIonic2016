@@ -119,6 +119,7 @@ angular.module('starter.controllers', [])
               if($scope.coordenadas.x > 0){
                   //Giré a la izquierda
                   $scope.coordenadas.resultado = "Izquierda";
+                  $scope.imagenResultado = "izquierda.jpg";
                   try{
                       window.plugins.NativeAudio.play('izquierda');    
                   }
@@ -129,6 +130,7 @@ angular.module('starter.controllers', [])
               else{
                   //Giré a la derecha
                   $scope.coordenadas.resultado = "Derecha";
+                  $scope.imagenResultado = "derecha.png";
                   try{
                       window.plugins.NativeAudio.play("derecha");    
                   }
@@ -136,6 +138,10 @@ angular.module('starter.controllers', [])
                       console.log("No se puede ejecutar cordovaNativeAudio en la PC");
                   }
               }
+          }
+          else{
+            $scope.imagenResultado = "centro.png";
+            $scope.coordenadas.resultado = "";
           }
       }
       else{
@@ -145,6 +151,7 @@ angular.module('starter.controllers', [])
               if($scope.coordenadas.y > 0){
                   //Giré hacia abajo
                   $scope.coordenadas.resultado = "Abajo";
+                  $scope.imagenResultado = "abajo.png";
                   try{
                       window.plugins.NativeAudio.play('abajo');    
                   }
@@ -155,6 +162,7 @@ angular.module('starter.controllers', [])
               else{
                   //Giré hacia arriba
                   $scope.coordenadas.resultado = "Arriba";
+                  $scope.imagenResultado = "arriba.jpg";
                   try{
                       window.plugins.NativeAudio.play('arriba');    
                   }
@@ -162,6 +170,10 @@ angular.module('starter.controllers', [])
                       console.log("No se puede ejecutar cordovaNativeAudio en la PC");
                   }
               }
+          }
+          else{
+            $scope.imagenResultado = "centro.png";
+            $scope.coordenadas.resultado = "";
           }
       }
   };

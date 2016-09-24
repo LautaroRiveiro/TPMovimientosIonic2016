@@ -1,1 +1,6 @@
 /* Empty. Add your own CSS if you like */
+#imagen{
+	width: 80%;
+	display: block;
+    margin: 0 auto;
+}
