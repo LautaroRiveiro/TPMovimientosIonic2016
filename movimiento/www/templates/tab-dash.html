@@ -1,15 +1,36 @@
 <ion-view view-title="Movimiento" scroll="false">
   <ion-pane scroll="false">
           <ion-content class="padding">
-              <button class="button button-full button-positive" ng-click="Mirar()">
+              <img ng-src="img/{{imagenResultado}}" src="img/centro.png" alt="" id="imagen">
+
+                <div class="botonera">
+			        <table style="margin-left:auto;margin-right:auto;width: 85%;">
+			            <tr>
+			                <td><button ng-disabled="!grabar" class="button button-block button-assertive ion-record" ng-click="Grabar()"></button></td>
+			                <td><button ng-disabled="!parar" class="button button-block button-positive ion-stop" ng-click="Stop()">
+			                	
+			                </button></td>
+			                <td>
+			                <button ng-disabled="!reproducir" class="button button-block button-balanced ion-play" ng-click="Reproducir()"></button></td>
+			            </tr>
+			            <tr>
+			                <td><button ng-disabled="!borraryguardar" class="button button-block button-dark ion-trash-b" ng-click="Borrar()"></button> </td>
+			                <td><button ng-disabled="!borraryguardar" class="button button-block button-calm ion-checkmark" ng-click="Guardar()"></button></td>
+			                <td><button class="button button-block button-royal ion-music-note" ng-click="LeerTxt()"></button></td>
+			            </tr>
+			        </table>
+			    </div>
+
+<!-- 		      <button class="button button-full button-positive" ng-click="Mirar()">
                   Empezar mediciones
               </button>
               <button class="button button-full button-positive" ng-click="Parar()">
                   Parar mediciones
-              </button>
+              </button> -->
+              
               <h6>RESULTADO: {{coordenadas.resultado}}</h6>
+              <h6>MELODIA: {{melodia}}</h6>
 
-              <img ng-src="img/{{imagenResultado}}" alt="" id="imagen">
           </ion-content>
   </ion-pane>
 </ion-view>

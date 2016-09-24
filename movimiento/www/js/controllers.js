@@ -37,6 +37,88 @@ angular.module('starter.controllers', [])
         }
     });
 
+
+  //--------------------- FUNCIONES DE LA BOTONERA ---------------------------//
+  var i;
+  $scope.grabar = true;
+  $scope.borraryguardar = false;
+  
+  $scope.Grabar = function(){
+        $scope.parar = true;
+        $scope.grabar = false;
+        $scope.reproducir = false;
+        $scope.melodia = [];
+        i=0;
+        $scope.Mirar();
+    }
+    
+    $scope.Stop = function(){
+        $scope.parar = false;
+        $scope.reproducir = true;
+        $scope.borraryguardar = true;
+        $scope.Parar();
+    }
+    
+    $scope.Reproducir = function(){
+        angular.forEach($scope.melodia, function(value, key) {
+            $timeout(function(){
+                try{
+                    window.plugins.NativeAudio.play(value);
+                }
+                catch (err){
+                    console.log(err, value);
+                }
+            },2000);
+        });  
+    }
+    
+    $scope.Borrar = function(){
+        $scope.melodia = [];
+        i=0;
+        $scope.grabar = true;
+        $scope.parar = false;
+        $scope.reproducir = false;
+        $scope.borraryguardar = false;
+    }
+    
+    $scope.Guardar = function(){
+        var nombre = prompt("Ingrese un título para su melodía");
+        //var nombre = $scope.showPopup();
+        //alert(nombre);
+        
+        //EVALUAR QUE NO EXISTA
+
+        //GUARDAR EN ARCHIVO
+        var melodiastring = '"' + $scope.melodia.join('","') + '"';
+        var melodiaAGuardar = ',{autor:"'+nombre+'", nombre:"'+nombre+'", melodia:['+melodiastring+']}';
+        $cordovaFile.writeExistingFile(cordova.file.dataDirectory, "melodias.txt", melodiaAGuardar)
+          .then(function (success) {
+            // success
+          }, function (error) {
+            // error
+            alert(error);
+            alert("WriteFileEx Mal");
+        });
+
+        //Inhabilito GUARDAR y BORRAR, y habilito GRABAR
+        $scope.grabar = true;
+        $scope.borraryguardar = false;
+
+        
+    };
+    
+    $scope.LeerTxt = function(){
+        $cordovaFile.readAsText(cordova.file.dataDirectory, "melodias.txt").then(function (success) {
+            // success
+             alert(success);
+        }, function (error) {
+            // error
+            alert(error);
+            alert("Read Mal");
+        });
+    };
+
+
   //--------------------- FUNCIONES DEL DEVICE MOTION ------------------------//
     $scope.resultado;
     $scope.coordenadas = {
@@ -126,6 +208,8 @@ angular.module('starter.controllers', [])
                   catch (err){
                       console.log("No se puede ejecutar cordovaNativeAudio en la PC");
                   }
+                  $scope.melodia[i] = 'izquierda';
+                  i++;
               }
               else{
                   //Giré a la derecha
@@ -137,6 +221,8 @@ angular.module('starter.controllers', [])
                   catch (err){
                       console.log("No se puede ejecutar cordovaNativeAudio en la PC");
                   }
+                  $scope.melodia[i] = 'derecha';
+                  i++;
               }
           }
           else{
@@ -146,7 +232,7 @@ angular.module('starter.controllers', [])
       }
       else{
           //Fue más relevante el movimiento vertical
-          if (Math.abs($scope.coordenadas.y)>700){
+          if (Math.abs($scope.coordenadas.y)>600){
               //Fue relevante
               if($scope.coordenadas.y > 0){
                   //Giré hacia abajo
@@ -158,6 +244,8 @@ angular.module('starter.controllers', [])
                   catch (err){
                       console.log("No se puede ejecutar cordovaNativeAudio en la PC");
                   }
+                  $scope.melodia[i] = 'abajo';
+                  i++;
               }
               else{
                   //Giré hacia arriba
@@ -169,6 +257,8 @@ angular.module('starter.controllers', [])
                   catch (err){
                       console.log("No se puede ejecutar cordovaNativeAudio en la PC");
                   }
+                  $scope.melodia[i] = 'arriba';
+                  i++;
               }
           }
           else{
